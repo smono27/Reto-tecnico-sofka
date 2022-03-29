@@ -655,10 +655,10 @@ public class Login extends javax.swing.JFrame {
         Circulo_lupa.setVisible(true);
         Lupa.setVisible(true);
         lblComodines.setVisible(true);
-        if(nuevo_jugador.getComodines()== 0){
+        if (nuevo_jugador.getComodines() == 0) {
             Circulo_lupa.setEnabled(false);
             Lupa.setEnabled(false);
-            lblComodines.setEnabled(false);           
+            lblComodines.setEnabled(false);
         }
         for (Jugador j : arrayJugadores) {
             if (j.getNombre().equals(txtUsuario.getText())) {
@@ -746,12 +746,12 @@ public class Login extends javax.swing.JFrame {
                     }
                 } else {
                     nuevo_jugador.setPuntajeT(0);
-                    Circulo_lupa.setVisible(false);
-                    Lupa.setVisible(false);
-                    lblComodines.setVisible(false);
                     modificarPuntajeArrayJ(nuevo_jugador);
                     escribirArchivoJugadores(arrayJugadores);
                 }
+                Circulo_lupa.setVisible(false);
+                Lupa.setVisible(false);
+                lblComodines.setVisible(false);
                 btnAceptar_p.setEnabled(false);
                 lblPuntaje.setText(String.valueOf(nuevo_jugador.getPuntajeT() + puntaje));
                 numero_p = 0;
@@ -766,7 +766,7 @@ public class Login extends javax.swing.JFrame {
     private void btnAvanzarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAvanzarMouseClicked
         if (lblConfirmacion.getText().equals("INCORRECTO")) {
             JOptionPane.showMessageDialog(this, "DESAFORTUNADAMENTE HAS PERDIDO TU ACUMULADO ",
-                    "RAYOS", 0, new javax.swing.ImageIcon(getClass().getResource("/Image/give-up (Personalizado).png")));
+                    "OPS!", 0, new javax.swing.ImageIcon(getClass().getResource("/Image/give-up (Personalizado).png")));
             nuevo_jugador.setPuntajeT(0);
             modificarPuntajeArrayJ(nuevo_jugador);
             escribirArchivoJugadores(arrayJugadores);
@@ -775,6 +775,9 @@ public class Login extends javax.swing.JFrame {
                     JOptionPane.INFORMATION_MESSAGE);
             System.exit(0);
         } else {
+            Circulo_lupa.setVisible(true);
+            Lupa.setVisible(true);
+            lblComodines.setVisible(true);
             buttonGroup2.clearSelection();
             R1_p.setEnabled(true);
             R2_p.setEnabled(true);
@@ -896,7 +899,7 @@ public class Login extends javax.swing.JFrame {
                         puntaje += 1650;
                         break;
                 }
-                lblPuntaje.setText(String.valueOf(puntaje));
+                lblPuntaje.setText(String.valueOf(nuevo_jugador.getPuntajeT() + puntaje));
                 switch (arrayPreguntas.get(nivel_ - 1).get(numero_p - 1).getPosCorrecta()) {
                     case 1:
                         R1_p.setSelected(true);
